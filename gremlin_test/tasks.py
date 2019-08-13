@@ -17,3 +17,21 @@ def graph_query_test():
             print(res[0])
     except:
         print(traceback.format_exc())
+
+
+@app.task(queue='test_one')
+def test_one(batch):
+    print('Test One & Batch %s' % batch)
+    time.sleep(0.2)
+
+
+@app.task(queue='test_two')
+def test_two(batch):
+    print('Test Two & Batch %s' % batch)
+    time.sleep(5)
+
+
+@app.task(queue='test_three')
+def test_three(batch):
+    print('Test Three & Batch %s' % batch)
+    time.sleep(1)
